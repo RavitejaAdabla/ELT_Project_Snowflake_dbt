@@ -1,12 +1,11 @@
 version: 2
 
 sources:
-  - name: snowflake_source
-    schema: staging
-    description: snowflake staging layer
-
+  - name: STAGING
+    database: ELT_DBT
+    schema: STAGING 
     tables:
-      - name: orders
+      - name: ORDERS
         description: stores order database
 
         columns:

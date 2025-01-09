@@ -6,17 +6,17 @@ name: 'snowflake'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'snowflake'
+profile: 'default'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-model-paths: ["models"]
-analysis-paths: ["analyses"]
-test-paths: ["tests"]
-seed-paths: ["seeds"]
-macro-paths: ["macros"]
-snapshot-paths: ["snapshots"]
+model-paths: ["snowflake/models"]
+analysis-paths: ["snowflake/analyses"]
+test-paths: ["snowflake/tests"]
+seed-paths: ["snowflake/seeds"]
+macro-paths: ["snowflake/macros"]
+snapshot-paths: ["snowflake/snapshots"]
 
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
@@ -30,7 +30,4 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  snowflake:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    +materialized: view

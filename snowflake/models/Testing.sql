@@ -1,11 +1,11 @@
 
 {{
     config(
-        materialized='ephemeral',
+        materialized='view',
     )
 }}
 
-with source_data as (
+
     select
         to_varchar(order_id) as OrderId,
         to_varchar(customer_id) as CustomerId,
@@ -18,9 +18,5 @@ with source_data as (
         to_timestamp(SUBSTR(cdc_timestamp,1,19), 'YYYY-MM-DD HH24:MI:SS') as ChangeTime
     from
         {{ source('STAGING', 'ORDERS') }}
-)
-select 
-    *
-from 
-    source_data
+
 
